@@ -33,18 +33,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
             final String tokenExtraidoHeader = request.getHeader("Authorization");
             final String tokenLimpio;
-            final String userEmail;
+            final String username;
 
             if(StringUtils.isEmpty(tokenExtraidoHeader) || !StringUtils.startsWithIgnoreCase(tokenExtraidoHeader,"Bearer ")){
+                filterChain.doFilter(request,response);
                 return;
             }
 
             tokenLimpio = tokenExtraidoHeader.substring(7);
-            userEmail = jwtService.extractUsername(tokenLimpio);
+            username = jwtService.extractUsername(tokenLimpio);
 
-            if(Objects.nonNull(userEmail) && SecurityContextHolder.getContext().getAuthentication()==null){
+            if(Objects.nonNull(username) && SecurityContextHolder.getContext().getAuthentication()==null){
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
-                UserDetails userDetails = usuarioService.userDetailsService().loadUserByUsername(userEmail);
+                UserDetails userDetails = usuarioService.userDetailsService().loadUserByUsername(username);
                 if(jwtService.validateToken(tokenLimpio, userDetails)){
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());

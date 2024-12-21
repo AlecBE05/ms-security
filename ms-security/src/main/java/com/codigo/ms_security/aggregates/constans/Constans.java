@@ -7,9 +7,9 @@ public class Constans {
     public static final String CLAVE_AccountNonLocked ="isAccountNonLocked";
     public static final String CLAVE_CredentialsNonExpired = "isCredentialsNonExpired";
     public static final String CLAVE_Enabled = "isEnabled";
-    public static final String USER_ADMIN = "ABovis";
-    public static final String ENDPOINTS_PERMIT = "/app/authentication/v1/**";
-    public static final String ENDPOINTS_USER = "/app/user/v1/**";
-    public static final String ENDPOINTS_ADMIN = "/app/admin/v1/**";
+    public static final String ACCESS = "access";
+    public static final String ENDPOINTS_PERMIT = "app/authentication/v1/**";
+    public static final String ENDPOINTS_USER = "app/user/v1/**";
+    public static final String ENDPOINTS_ADMIN = "app/admin/v1/**";
 
 }

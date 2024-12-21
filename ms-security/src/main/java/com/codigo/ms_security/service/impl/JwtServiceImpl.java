@@ -31,11 +31,12 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
-                .setSubject(userDetails.getUsername())
+                .setHeaderParam("typ","JWT")
                 .setClaims(addClaim(userDetails))
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+120000))
-                .claim("userCreated",Constans.USER_ADMIN)
+                .setExpiration(new Date(System.currentTimeMillis()+240000))
+                .claim("type",Constans.ACCESS)
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -76,4 +77,6 @@ public class JwtServiceImpl implements JwtService {
         claims.put(Constans.CLAVE_Enabled,userDetails.isEnabled());
         return claims;
     }
+
+
 }

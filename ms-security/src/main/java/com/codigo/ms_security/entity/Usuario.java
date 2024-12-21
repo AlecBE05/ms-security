@@ -30,6 +30,7 @@ public class Usuario implements UserDetails {
     private String password;
     private String tipoDoc;
     private String numDoc;
+    private String username;
     private Boolean isAccountNonExpired;
     private Boolean isAccountNonLocked;
     private Boolean isCredentialsNonExpired;
@@ -50,7 +51,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override

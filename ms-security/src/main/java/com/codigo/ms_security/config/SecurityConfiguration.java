@@ -3,7 +3,6 @@ package com.codigo.ms_security.config;
 
 import com.codigo.ms_security.aggregates.constans.Constans;
 import com.codigo.ms_security.entity.Role;
-import com.codigo.ms_security.service.AuthenticationService;
 import com.codigo.ms_security.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +19,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableWebSecurity

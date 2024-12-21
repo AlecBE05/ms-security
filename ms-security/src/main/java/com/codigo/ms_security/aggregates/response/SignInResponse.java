@@ -10,4 +10,5 @@ import lombok.Setter;
 public class SignInResponse {
 
     private String token;
+
 }
